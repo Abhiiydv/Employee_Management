@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +46,28 @@ public List<Employee> getEmployee(){
 	public Optional<Employee> getAllEmployee(@PathVariable Integer id){
 			Optional<Employee> emp =  employeeService.getEmployee(id);
 			return emp;
+			
 		}
+	
+	@DeleteMapping("/employee/{id}")
+	public ResponseEntity <Employee>  deleteEmployee(@PathVariable Integer id){
+		System.out.println(id);
+		ResponseEntity <Employee>rp = new ResponseEntity<>(HttpStatus.OK);
+		try {
+			employeeService.deleteEmployee(id);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			rp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return rp;
+		
+		
+	}
+	@DeleteMapping("/deleteall")
+	public String deleteAll() {
+		employeeService.deleteAll();
+		return "Deleted All records";
+	}
 }

@@ -17,4 +17,8 @@ public List<Employee> getAllEmployees();
 
 Optional<Employee> getEmployee(Integer id);
 
+public void deleteEmployee(Integer id);
+
+public void deleteAll();
+
 }
