@@ -21,4 +21,6 @@ public void deleteEmployee(Integer id);
 
 public void deleteAll();
 
+Employee updateEmployee(Employee employee, Integer id);
+
 }
