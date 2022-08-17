@@ -1,6 +1,7 @@
 package com.emp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,7 @@ public interface IEmployeeService{
 Integer saveEmployee(Employee employee);
 
 public List<Employee> getAllEmployees();
+
+Optional<Employee> getEmployee(Integer id);
 
 }
